@@ -1,6 +1,8 @@
 import { parse } from 'encoding/csv.ts';
 import { csv2json } from './mod.ts';
 import { type FlagOptions, parseFlags, type ParseFlagsContext } from 'cliffy/flags/mod.ts';
+import { ensureDir } from 'fs/mod.ts';
+
 type Flags = {
   source: string;
   output: string;
@@ -37,23 +39,22 @@ const { flags } = parseFlags<
   }],
 });
 
-console.log(flags);
-
 const keyColHeader = flags.key ?? 'key';
 const firstRowIndex = flags.head ?? 0;
 const langs = flags.langs;
-const sourceDir = flags.source;
+const sourceFile = flags.source;
 const outputDir = flags.output;
 
-const fileContent = await parse(await Deno.readTextFile(sourceDir));
+const fileContent = await parse(await Deno.readTextFile(sourceFile));
 // transform
 const langTranslatesMap = await csv2json(fileContent, {
-  langs: [...langs],
+  langs,
   firstRowIndex: firstRowIndex,
   keyColHead: keyColHeader,
 });
 
 // write
+await ensureDir(outputDir);
 const outputTasks = langs.map((lang) => {
   const content = langTranslatesMap[lang];
   return Deno.writeTextFile(
