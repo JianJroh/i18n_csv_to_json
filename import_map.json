@@ -1,7 +1,0 @@
-{
-  "imports": {
-    "encoding/": "https://deno.land/std@0.152.0/encoding/",
-    "cliffy/": "https://deno.land/x/cliffy@v0.25.6/",
-    "fs/": "https://deno.land/std@0.181.0/fs/"
-  }
-}

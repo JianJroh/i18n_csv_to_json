@@ -1,7 +1,5 @@
-import { parse } from 'encoding/csv.ts';
+import { ensureDir, type FlagOptions, parse, parseFlags, type ParseFlagsContext } from './deps.ts';
 import { csv2json } from './mod.ts';
-import { type FlagOptions, parseFlags, type ParseFlagsContext } from 'cliffy/flags/mod.ts';
-import { ensureDir } from 'fs/mod.ts';
 
 type Flags = {
   source: string;
