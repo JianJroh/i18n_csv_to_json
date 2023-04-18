@@ -17,22 +17,27 @@ const { flags } = parseFlags<
 >(Deno.args, {
   flags: [{
     name: 'source',
+    aliases: ['s'],
     type: 'string',
     equalsSign: true,
   }, {
     name: 'output',
+    aliases: ['o'],
     type: 'string',
     equalsSign: true,
   }, {
     name: 'key',
+    aliases: ['k'],
     type: 'string',
     equalsSign: true,
   }, {
     name: 'head',
+    aliases: ['h'],
     type: 'integer',
     equalsSign: true,
   }, {
     name: 'langs',
+    aliases: ['l'],
     list: true,
     type: 'string',
     equalsSign: true,

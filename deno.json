@@ -1,7 +1,7 @@
 {
   "importMap": "import_map.json",
   "tasks": {
-    "dev": "deno run --allow-read --allow-write bin.ts --source=./example/translates.csv --output=./example/locales --langs=zh,ja,en --key=key --head=0"
+    "start": "deno run --allow-read --allow-write bin.ts --source=./example/translates.csv --output=./example/locales --langs=zh,ja,en -k key -h 0"
   },
   "fmt": {
     "options": {
